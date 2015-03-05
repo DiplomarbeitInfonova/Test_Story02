@@ -64,6 +64,17 @@ public class Leg
         this.distance = distance;
     }
 
+    
+    
+    public boolean checkDistance()
+    {
+        if(this.getDistance()!=0)
+        {
+            return true;
+        }
+        return false;
+    }
+    
     @Override
     public boolean equals(Object obj)
     {

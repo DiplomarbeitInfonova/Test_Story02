@@ -56,7 +56,7 @@ public class Main
             System.out.println("");
             Location[] locs = dal.getLocationsFromLeg(l);
             System.out.println("distanz: " + l.getDistance());
-            if (l.getDistance() == -1.0)
+            if (l.checkDistance())
             {
 
                 FileFiltering filefiltering = new FileFiltering();

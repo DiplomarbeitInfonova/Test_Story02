@@ -87,7 +87,7 @@ public class DAL
             } else if (lines.length == 3)
             {
                  
-                Leg l = new Leg(lines[0], lines[1], lines[2], 815);
+                Leg l = new Leg(lines[0], lines[1], lines[2], 0);
                
               
                 legs.add(l);
