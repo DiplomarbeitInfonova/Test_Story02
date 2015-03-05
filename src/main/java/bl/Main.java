@@ -36,6 +36,7 @@ public class Main
 
     private void showLegs() throws JSONException
     {
+        System.out.println("TESTCOMMIT");
         try
         {
             FileChooser fc = new FileChooser();
