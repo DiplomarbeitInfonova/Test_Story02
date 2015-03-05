@@ -30,10 +30,6 @@ public class IntoCSV {
             bw.newLine();
             bw.flush();
             bw.close();
-//            PrintWriter writer = new PrintWriter(bw);
-//
-//            writer.format(key+";"+oldDis+";"+newDis);
-//            writer.close();
 
         } catch (IOException ex) {
             Logger.getLogger(IntoCSV.class.getName()).log(Level.SEVERE, null, ex);

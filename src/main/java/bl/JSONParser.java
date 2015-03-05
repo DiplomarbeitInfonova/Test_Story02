@@ -17,12 +17,7 @@ public class JSONParser {
 
         JSONObject obj = new JSONObject(parsingString);
         String distance = obj.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("distance").getString("text");
-        //String duration = obj.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("duration").getString("text");
-
         return distance;
-//        String distance = parsingString.substring(parsingString.indexOf("text") + 7, parsingString.indexOf("km"));
-//        distance = distance.trim().substring(1);
-//        return distance;
     }
 
 }
