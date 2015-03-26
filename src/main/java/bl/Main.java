@@ -8,7 +8,9 @@ package bl;
 import beans.Leg;
 import beans.Location;
 import dal.DAL;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
@@ -43,13 +45,13 @@ public class Main
             File locationfile = fc.onFileChooser("Locations");
             File legfile = fc.onFileChooser("Legs");
             
-            LinkedList<Leg> leglist = dal.loadLegs(legfile);
+            LinkedList<Leg> leglist = dal.loadLegs(new BufferedReader(new FileReader(legfile)));
             for (int i = 0; i < leglist.size(); i++)
                 {
                     System.out.println(leglist.get(i).toString());
             }
 
-            LinkedList<Location> loclist = dal.loadLocations(locationfile);
+            LinkedList<Location> loclist = dal.loadLocations(new BufferedReader(new FileReader(locationfile)));
             String gesamtKey = JOptionPane.showInputDialog(null, "KEY1_KEY2");
 
             Leg l = dal.getLegFromKey(leglist, gesamtKey);
