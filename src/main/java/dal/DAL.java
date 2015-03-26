@@ -37,12 +37,12 @@ public class DAL
         this.legs = legs;
     }
 
-    public LinkedList<Location> loadLocations(File f)
+    public LinkedList<Location> loadLocations( BufferedReader br)
     {
-
+        //gleich wie legs (br)
         try
         {
-            BufferedReader br = new BufferedReader(new FileReader(f));
+          
             String line = "";
             line = br.readLine();
             while ((line = br.readLine()) != null)
@@ -68,10 +68,11 @@ public class DAL
         return locations;
     }
 
-    public LinkedList<Leg> loadLegs(File f) throws FileNotFoundException, IOException
+    public LinkedList<Leg> loadLegs(BufferedReader br) throws FileNotFoundException, IOException
     {
+        //Statt File BufferedReader verwenden für Test
 
-        BufferedReader br = new BufferedReader(new FileReader(f));
+        
         String line = "";
         line = br.readLine();
 

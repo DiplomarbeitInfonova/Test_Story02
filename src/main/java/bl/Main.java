@@ -42,10 +42,11 @@ public class Main
             FileChooser fc = new FileChooser();
             File locationfile = fc.onFileChooser("Locations");
             File legfile = fc.onFileChooser("Legs");
+            
             LinkedList<Leg> leglist = dal.loadLegs(legfile);
             for (int i = 0; i < leglist.size(); i++)
-            {
-                System.out.println(leglist.get(i).toString());
+                {
+                    System.out.println(leglist.get(i).toString());
             }
 
             LinkedList<Location> loclist = dal.loadLocations(locationfile);
@@ -73,7 +74,7 @@ public class Main
             System.out.println("--------------------------------------------------");
             IntoCSV into = new IntoCSV();
 
-            into.writecsv(l.getKey(), l.getDistance() + "", jsonparser.getDistanceFromJSON());
+     //temp. down       into.writecsv(l.getKey(), l.getDistance() + "", jsonparser.getDistanceFromJSON());
 
         } catch (IOException ex)
         {

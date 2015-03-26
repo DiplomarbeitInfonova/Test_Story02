@@ -26,7 +26,7 @@ public class FileFiltering {
     { 
           TextURL texturl = new TextURL("http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + locs[0].getLatitude() + "," + locs[0].getLongitude() + "&destinations=" + locs[1].getLatitude() + "," + locs[1].getLongitude() + "");
             JSONParser jsonparser = new JSONParser(texturl.read());
-            l.setDistance(Double.parseDouble(jsonparser.getDistanceFromJSON()));
+            l.setDistance(Double.parseDouble(jsonparser.getDistanceFromJSON().split(" ")[0]));
     }
     
 }

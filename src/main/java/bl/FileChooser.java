@@ -18,14 +18,18 @@ public class FileChooser {
     
     public File onFileChooser(String type) throws IOException
     {
-        if(type.equals("Speicher Datei"))
-        {
-            JFileChooser chooser = new JFileChooser();
-            chooser.setCurrentDirectory(new File("."));
-            chooser.showOpenDialog(null);
-            return chooser.getSelectedFile();
-        }
-        JFileChooser fc = new JFileChooser("."+System.getProperty("file.separator")+"src"+System.getProperty("file.separator")+"res");
+//        if(type.equals("Speicher Datei"))
+//        {
+//            JFileChooser chooser = new JFileChooser("E:/");
+//           chooser.setCurrentDirectory(new File("E:\\"));
+//            chooser.showOpenDialog(null);
+//            return chooser.getSelectedFile();
+//        }
+        
+        
+        //JFileChooser fc = new JFileChooser("."+System.getProperty("file.separator")+"src"+System.getProperty("file.separator")+"res");
+        String mypath=System.getProperty("user.dir")+System.getProperty("file.separator")+"src/main/java/res";
+        JFileChooser fc = new JFileChooser(mypath);
         fc.setDialogTitle("Bitte die " + type + " auswählen!");
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
         {
