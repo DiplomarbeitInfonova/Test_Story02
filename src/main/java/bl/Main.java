@@ -65,9 +65,13 @@ public class Main
                 FileFiltering filefiltering = new FileFiltering();
                 filefiltering.inputMissingColumns(l, locs);
             }
-
-            TextURL texturl = new TextURL("http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + locs[0].getLatitude() + "," + locs[0].getLongitude() + "&destinations=" + locs[1].getLatitude() + "," + locs[1].getLongitude() + "");
-            JSONParser jsonparser = new JSONParser(texturl.read());
+//"http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + locs[0].getLatitude() + "," + locs[0].getLongitude() + "&destinations=" + locs[1].getLatitude() + "," + locs[1].getLongitude() + ""
+            String url="http://maps.googleapis.com/maps/api/directions/json?origin=" + locs[0].getLatitude() + "," + locs[0].getLongitude() + "&destination=" + locs[1].getLatitude() + "," + locs[1].getLongitude() + "";
+            System.out.println(url);
+            TextURL texturl = new TextURL(url);
+            String response=texturl.read();
+            JSONParser jsonparser = new JSONParser(response);
+            System.out.println(texturl.read());
             // String response=texturl.read().substring(texturl.read().indexOf("km")-5,texturl.read().indexOf("km"));
             System.out.println("distanz: " + l.getDistance());
             System.out.println("--------------------------------------------------");
