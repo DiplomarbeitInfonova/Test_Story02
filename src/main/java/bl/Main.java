@@ -46,19 +46,17 @@ public class Main
             File legfile = fc.onFileChooser("Legs");
             
             LinkedList<Leg> leglist = dal.loadLegs(new BufferedReader(new FileReader(legfile)));
-            for (int i = 0; i < leglist.size(); i++)
-                {
-                    System.out.println(leglist.get(i).toString());
-            }
+         
 
             LinkedList<Location> loclist = dal.loadLocations(new BufferedReader(new FileReader(locationfile)));
             String gesamtKey = JOptionPane.showInputDialog(null, "KEY1_KEY2");
 
             Leg l = dal.getLegFromKey(leglist, gesamtKey);
-            System.out.println("distanz: " + l.getDistance());
-            System.out.println("");
+            
+        
             Location[] locs = dal.getLocationsFromLeg(l);
-            System.out.println("distanz: " + l.getDistance());
+            System.out.println("src: " + locs[0].getKey());
+            System.out.println("target: "+locs[1].getKey());
             if (l.checkDistance())
             {
 
@@ -67,14 +65,17 @@ public class Main
             }
 //"http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + locs[0].getLatitude() + "," + locs[0].getLongitude() + "&destinations=" + locs[1].getLatitude() + "," + locs[1].getLongitude() + ""
             String url="http://maps.googleapis.com/maps/api/directions/json?origin=" + locs[0].getLatitude() + "," + locs[0].getLongitude() + "&destination=" + locs[1].getLatitude() + "," + locs[1].getLongitude() + "";
-            System.out.println(url);
+           //System.out.println(url);
             TextURL texturl = new TextURL(url);
             String response=texturl.read();
             JSONParser jsonparser = new JSONParser(response);
-            System.out.println(texturl.read());
+            
+
+
+//System.out.println(texturl.read());
             // String response=texturl.read().substring(texturl.read().indexOf("km")-5,texturl.read().indexOf("km"));
             SPF spf=new SPF();
-            boolean googleorleg=spf.compareLegs(locs[0], locs[1], loclist, leglist, l.getDistance());
+            boolean googleorleg=spf.compareLegs(locs[0], locs[1], loclist, leglist,100);
             System.out.println("Google distance: " + l.getDistance());
              System.out.println("Compared leg distance: " + spf.getLegdistance());
             System.out.println("--------------------------------------------------");

@@ -49,7 +49,7 @@ public class DAL
             {
 
                 line = line.replace("\"", "");
-               
+                
                 String[] splits = line.split(";");
                 if (!(splits[3].equals("") || splits[4].equals("")))
                 {
@@ -113,13 +113,14 @@ public class DAL
         String target_key=sarray[1];
                 //public Leg(String key, String source_location_key, String target_location_key, double distance)
         Leg l=new Leg(Key,src_key, target_key,0);
+        System.out.println("Key: "+Key+"\nsrc: "+src_key+"\ntarget: "+target_key);
         return l;
     }
 
     public Location[] getLocationsFromLeg(Leg l)
     {
         
-        System.out.println(l.getSource_location_key()+"||"+l.getTarget_location_key());
+       
 
         Location[] locs = new Location[2];
         int i = 0;

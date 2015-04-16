@@ -15,7 +15,9 @@ public class SPF {
     }
   public  boolean compareLegs(Location A, Location C, LinkedList<Location> loclist, LinkedList<Leg> leglist, double googledistance )  {
    //Leg x und y finden, die gemeinsamen Punkt B haben und bei A bzw. C beginnen
-     dal=new DAL();
+      System.out.println("------------------------------------\nCOMPARE LEGS");
+      System.out.println("A: "+A.getKey()+"\n B: "+C.getKey());
+      dal=new DAL();
      LinkedList<Leg> xCandidates=new LinkedList<Leg>();
      LinkedList<Leg> yCandidates=new LinkedList<Leg>();
       Leg x=new Leg();
