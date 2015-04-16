@@ -108,7 +108,12 @@ public class DAL
                 return l;
             }
         }
-        return null;
+        String[] sarray=Key.split("_");
+        String src_key=sarray[0];
+        String target_key=sarray[1];
+                //public Leg(String key, String source_location_key, String target_location_key, double distance)
+        Leg l=new Leg(Key,src_key, target_key,0);
+        return l;
     }
 
     public Location[] getLocationsFromLeg(Leg l)

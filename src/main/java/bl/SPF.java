@@ -8,12 +8,18 @@ import java.util.LinkedList;
 
 public class SPF {
     DAL dal;
-  public  void compareLegs(Location A, Location C, LinkedList<Location> loclist, LinkedList<Leg> leglist )  {
+    private double legdistance;
+
+    public double getLegdistance() {
+        return legdistance;
+    }
+  public  boolean compareLegs(Location A, Location C, LinkedList<Location> loclist, LinkedList<Leg> leglist, double googledistance )  {
    //Leg x und y finden, die gemeinsamen Punkt B haben und bei A bzw. C beginnen
      dal=new DAL();
      LinkedList<Leg> xCandidates=new LinkedList<Leg>();
      LinkedList<Leg> yCandidates=new LinkedList<Leg>();
-      Leg x,y;
+      Leg x=new Leg();
+      Leg y=new Leg();
     for(Leg l:leglist){
         Location[] locarray=dal.getLocationsFromLeg(l);
         if(locarray[0].equals(A)||locarray[1].equals(A)){
@@ -47,6 +53,14 @@ public class SPF {
                y=yCandidates.get(i);
            }
         }
+    }
+     legdistance=x.getDistance()+y.getDistance();
+    if(legdistance<googledistance){
+        return true;
+    }else if(legdistance>googledistance){
+        return false;
+    }else{
+        return false;
     }
   }
 }

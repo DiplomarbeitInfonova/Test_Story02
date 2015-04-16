@@ -38,7 +38,7 @@ public class Main
 
     private void showLegs() throws JSONException
     {
-        System.out.println("TESTCOMMIT");
+       
         try
         {
             FileChooser fc = new FileChooser();
@@ -73,7 +73,10 @@ public class Main
             JSONParser jsonparser = new JSONParser(response);
             System.out.println(texturl.read());
             // String response=texturl.read().substring(texturl.read().indexOf("km")-5,texturl.read().indexOf("km"));
-            System.out.println("distanz: " + l.getDistance());
+            SPF spf=new SPF();
+            boolean googleorleg=spf.compareLegs(locs[0], locs[1], loclist, leglist, l.getDistance());
+            System.out.println("Google distance: " + l.getDistance());
+             System.out.println("Compared leg distance: " + spf.getLegdistance());
             System.out.println("--------------------------------------------------");
             String output = "Key: " + l.getKey() + "; Old Distance: " + l.getDistance() + " km; New Distance: " + jsonparser.getDistanceFromJSON();
             System.out.println(output);
