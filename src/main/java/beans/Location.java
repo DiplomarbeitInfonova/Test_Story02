@@ -113,6 +113,12 @@ public class Location
         this.street = street;
     }
 
+    
+    public boolean equals(Location l){
+        
+        return this.getKey().equals(l.getKey());
+    }
+    
     @Override
     public String toString()
     {
