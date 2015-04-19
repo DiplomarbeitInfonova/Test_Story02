@@ -9,28 +9,42 @@ import java.util.LinkedList;
 public class SPF {
     DAL dal;
     private double legdistance;
-
+    Leg x,y;
     public double getLegdistance() {
         return legdistance;
+    }
+    
+    public SPF(DAL dal){
+        this.dal=dal;
     }
   public  boolean compareLegs(Location A, Location C, LinkedList<Location> loclist, LinkedList<Leg> leglist, double googledistance )  {
    //Leg x und y finden, die gemeinsamen Punkt B haben und bei A bzw. C beginnen
       System.out.println("------------------------------------\nCOMPARE LEGS");
-      System.out.println("A: "+A.getKey()+"\n B: "+C.getKey());
-      dal=new DAL();
+      System.out.println("A: "+A.getKey()+" -> C: "+C.getKey());
+     
      LinkedList<Leg> xCandidates=new LinkedList<Leg>();
      LinkedList<Leg> yCandidates=new LinkedList<Leg>();
-      Leg x=new Leg();
-      Leg y=new Leg();
+       x=new Leg();
+      y=new Leg();
     for(Leg l:leglist){
         Location[] locarray=dal.getLocationsFromLeg(l);
-        if(locarray[0].equals(A)||locarray[1].equals(A)){
+        //herausfinden, ob es Legs gibt die bei A oder C anfangen bzw. aufhören
+        if(locarray[0].equals(A)){
             xCandidates.add(l);
         }
-          if(locarray[0].equals(C)||locarray[1].equals(C)){
+          if(locarray[1].equals(C)){
             yCandidates.add(l);
         }
-          
+    }  
+//      System.out.println("Candidates for X");
+//    for(Leg xc:xCandidates){
+//        System.out.println(xc.getKey());
+//    }
+//    System.out.println("Candidates for Y");
+//    for(Leg yc:yCandidates){
+//        System.out.println(yc.getKey());
+//    }
+      System.out.println("------");
           //Herausfinden, ob ein paar aus koordinaten eine gemeinsame Location haben
            Location[] xLocs,yLocs;
            int ix,iy;
@@ -55,8 +69,13 @@ public class SPF {
                y=yCandidates.get(i);
            }
         }
-    }
+    
+      
+      
      legdistance=x.getDistance()+y.getDistance();
+     if(x==null||y==null||legdistance==0){
+         return false;
+     }else 
     if(legdistance<googledistance){
         return true;
     }else if(legdistance>googledistance){

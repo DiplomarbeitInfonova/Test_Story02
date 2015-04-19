@@ -71,7 +71,7 @@ public class Leg
     
     public boolean checkDistance()
     {
-        if(this.getDistance()!=0)
+        if(this.getDistance()==0)
         {
             return true;
         }

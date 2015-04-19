@@ -16,7 +16,7 @@ public class JSONParser {
     public String getDistanceFromJSON() throws JSONException {
 
         JSONObject obj = new JSONObject(parsingString);
-        String distance = obj.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("distance").getString("text");
+        String distance = obj.getJSONArray("routes").getJSONObject(0).getJSONArray("legs").getJSONObject(0).getJSONObject("distance").getString("text");
         return distance;
     }
 

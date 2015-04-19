@@ -112,8 +112,20 @@ public class DAL
         String src_key=sarray[0];
         String target_key=sarray[1];
                 //public Leg(String key, String source_location_key, String target_location_key, double distance)
-        Leg l=new Leg(Key,src_key, target_key,0);
-        System.out.println("Key: "+Key+"\nsrc: "+src_key+"\ntarget: "+target_key);
+       
+        //if(src_key.length()==6&&src_key.charAt(0)=='A'&&src_key.charAt(1)=='T'){
+            if(src_key.substring(0, 2).equals("AT")){
+                src_key=src_key.substring(2,6);
+            }
+             if(target_key.substring(0, 2).equals("AT")){
+                target_key=target_key.substring(2,6);
+            }
+            
+            
+        
+        
+        
+         Leg l=new Leg(Key,src_key, target_key,0);
         return l;
     }
 
@@ -129,21 +141,25 @@ public class DAL
             if (loc.getKey().equals(l.getSource_location_key()))
             {
 
-                locs[i] = loc;
-                i++;
+                locs[0] = loc;
+              
             }
+          
+           
+        }
+        for (Location loc : locations)
+        {
+           
             if (loc.getKey().equals(l.getTarget_location_key()))
             {
 
-                locs[i] = loc;
-                i++;
+                locs[1] = loc;
+             
             }
-            if (i > 1)
-            {
-                break;
-            }
+           
         }
-
+        
+        
         return locs;
     }
 }
