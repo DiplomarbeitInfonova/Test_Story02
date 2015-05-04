@@ -111,9 +111,7 @@ public class DAL
         String[] sarray=Key.split("_");
         String src_key=sarray[0];
         String target_key=sarray[1];
-                //public Leg(String key, String source_location_key, String target_location_key, double distance)
-       
-        //if(src_key.length()==6&&src_key.charAt(0)=='A'&&src_key.charAt(1)=='T'){
+              
             if(src_key.substring(0, 2).equals("AT")){
                 src_key=src_key.substring(2,6);
             }

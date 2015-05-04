@@ -25,7 +25,6 @@ public class FileFiltering {
     public void inputMissingColumns(Leg l, Location[] locs) throws MalformedURLException, JSONException
     { 
          String url="http://maps.googleapis.com/maps/api/directions/json?origin=" + locs[0].getLatitude() + "," + locs[0].getLongitude() + "&destination=" + locs[1].getLatitude() + "," + locs[1].getLongitude() + "";
-           //System.out.println(url);
             TextURL texturl = new TextURL(url);
             String response=texturl.read();
             JSONParser jsonparser = new JSONParser(response);

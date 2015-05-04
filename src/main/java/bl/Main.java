@@ -56,15 +56,12 @@ public class Main {
                 FileFiltering filefiltering = new FileFiltering();
                 filefiltering.inputMissingColumns(l, locs);
             }
-//"http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + locs[0].getLatitude() + "," + locs[0].getLongitude() + "&destinations=" + locs[1].getLatitude() + "," + locs[1].getLongitude() + ""
             String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + locs[0].getLatitude() + "," + locs[0].getLongitude() + "&destination=" + locs[1].getLatitude() + "," + locs[1].getLongitude() + "";
             TextURL texturl = new TextURL(url);
             String response = texturl.read();
             JSONParser jsonparser = new JSONParser(response);
             double googledistance = Double.parseDouble(jsonparser.getDistanceFromJSON().split(" ")[0]);
 
-//System.out.println(texturl.read());
-            // String response=texturl.read().substring(texturl.read().indexOf("km")-5,texturl.read().indexOf("km"));
             SPF spf = new SPF(dal);
 
             System.out.println("Google distance: " + googledistance);
@@ -94,7 +91,7 @@ public class Main {
 
             IntoCSV into = new IntoCSV();
 
-     //temp. down       into.writecsv(l.getKey(), l.getDistance() + "", jsonparser.getDistanceFromJSON());
+            //into.writecsv(l.getKey(), l.getDistance() + "", jsonparser.getDistanceFromJSON());
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
